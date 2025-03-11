@@ -1,0 +1,72 @@
+<app-header></app-header>
+
+
+<ng-template #otpDialog>
+  <div class="otp-popup">
+    <h2>Create New Account</h2>
+    <label>
+      <input type="radio" name="accountType" [(ngModel)]="selectedAccountType" [value]="'Checking'"> Checking Account
+    </label>
+    <label>
+      <input type="radio" name="accountType" [(ngModel)]="selectedAccountType" [value]="'Savings'"> Savings Account
+    </label>
+    <button (click)="createNewAccount(selectedAccountType)">Create Account</button>
+    <button (click)="resetSelection()">Reset</button>
+    <button (click)="closeDialog()">Close</button>
+  </div>
+</ng-template>
+
+<!-- <ng-template #createAccountDialog>
+  <div class="otp-popup">
+    <h2>Create New Account</h2>
+    <label>
+      <input type="radio" name="accountType" [(ngModel)]="selectedAccountType" [value]="'Checking'"> Checking Account
+    </label>
+    <label>
+      <input type="radio" name="accountType" [(ngModel)]="selectedAccountType" [value]="'Savings'"> Savings Account
+    </label>
+    <button (click)="createNewAccount(selectedAccountType)">Create Account</button>
+    <button (click)="closeDialog()">Close</button>
+  </div>
+</ng-template> -->
+
+<!-- Overlay background for pop-up (if not already present) -->
+<div class="otp-popup-overlay" style="display:none;">
+  <!-- Pop-up container -->
+  <div class="otp-popup">
+    <button class="close-btn">&times;</button>
+    <h2>Enter OTP</h2>
+    <!-- The rest of your pop-up content -->
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <!-- <th>Account ID</th> -->
+      <th>Account Number</th>
+      <th>Account Type</th>
+      <th>Status</th>
+      <th>Balance</th>
+      <th>Action</th> <!-- New column for actions -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accounts; let i = index"
+    [ngClass]="{
+      'request-pending': account.requestPending, 
+      'inactive-pending': account.status === 'INACTIVE'
+    }">
+        <!-- <td>{{ account.accountId }}</td> -->
+        <td>{{ account.accountNumber }}</td>
+        <td>{{ account.accountType }}</td>
+        <td>{{ account.status }}</td>
+        <td>{{ account.balance }}</td>
+        <td><button class="delete-btn" 
+          *ngIf="account.status !== 'INACTIVE'" 
+          (click)="initiateDeleteRequest(i)" 
+          [disabled]="account.requestPending">Delete Account</button></td>
+      </tr>
+  </tbody>
+</table>
+<button class="add-account-btn" (click)="openDialog()">Add New Account</button>

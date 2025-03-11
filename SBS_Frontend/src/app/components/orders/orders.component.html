@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="container">
+  <h2>
+    {{ getUserRole() === userRoles.merchant ? 'Request Payment' : 'Send Payment' }}
+  </h2>
+  <form #paymentForm="ngForm" (ngSubmit)="submitTransaction(paymentForm)">
+    <div class="form-group">
+      <label for="account">{{ getUserRole() === userRoles.merchant ? 'Customer Account Number' : 'Merchant Account Number' }}</label>
+      <!-- Update the ngModel to bind to senderAcc.accountNumber -->
+      <input type="text" id="account" [(ngModel)]="order.senderAcc" name="senderAcc" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" [(ngModel)]="order.amount" name="amount" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!paymentForm.valid">
+        {{ getUserRole() === userRoles.merchant ? 'Request' : 'Send' }}
+      </button>
+    </div>
+  </form>
+</div>
+<ng-template #otpDialog>
+  <div class="otp-popup">
+    <h2>Enter OTP</h2>
+    <input type="text" [(ngModel)]="otp" placeholder="Enter OTP">
+    <button (click)="validateOTP()">Submit</button>
+  </div>
+</ng-template>

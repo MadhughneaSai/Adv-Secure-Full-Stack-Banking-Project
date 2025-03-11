@@ -1,0 +1,134 @@
+/* General body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Styling for the account details table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+th {
+  background-color: #497174;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+/* Hover effect for table rows */
+tr:hover {
+  background-color: #e8f5e9;
+}
+
+/* Delete button styles */
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Styles for rows with deletion in progress or deleted */
+.request-pending, .row-deleted {
+  background-color: #cccccc;
+  color: #666666;
+}
+
+/* Additional style for deleted rows */
+.row-deleted {
+  text-decoration: line-through;
+}
+
+/* Style for inactive account rows */
+.status-inactive {
+  border: 2px dashed #666666;
+}
+
+/* Styling for the pop-up container */
+.otp-popup {
+  /* background-color: #ffffff; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* padding: 20px; */
+  /* width: 300px; */
+  max-width: 80%;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the pop-up title */
+.otp-popup h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Styling for the radio buttons and labels */
+.otp-popup label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Styling for the buttons */
+.otp-popup button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Hover effect for buttons */
+.otp-popup button:hover {
+  background-color: #45a049;
+}
+
+/* Styling for the close button */
+.otp-popup .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+  border: none;
+  background-color: transparent;
+}
+
+/* Hover effect for close button */
+.otp-popup .close-btn:hover {
+  color: #333;
+}
+
+/* Center the "Add New Account" button */
+.add-account-btn {
+  display: block;
+  margin: 20px auto; /* Adjust the margin as needed */
+  text-align: center;
+}
